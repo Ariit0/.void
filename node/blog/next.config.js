@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+	reactStrictMode: true,
+	env: {
+		DIRNAME: __dirname
+	},
+	images: {
+		loader: "custom"
+	}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

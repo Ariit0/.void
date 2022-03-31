@@ -1,0 +1,15 @@
+{
+    "folders": [
+        {
+            "path": "node/blog"
+        },
+        {
+            "path": "node/serverless"
+        },
+        {
+            "name": "root",
+            "path": "."
+        }
+    ],
+    "settings": {}
+}
