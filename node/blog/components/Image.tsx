@@ -1,4 +1,9 @@
-import NextImage, { ImageLoaderProps, ImageProps } from "next/image";
+import NextImage, { ImageLoaderProps, ImageProps as NextImageProps } from "next/image";
+import utilStyles from "../styles/utils.module.css";
+
+interface ImageProps extends NextImageProps {
+	circle?: boolean;
+}
 
 const customLoader = ({ src, width, quality }: ImageLoaderProps) => {
 	// Generate a reasonably unique base folder. Doesn't have to be perfectly unique,
@@ -33,7 +38,10 @@ const customLoader = ({ src, width, quality }: ImageLoaderProps) => {
 };
 
 const Image = (props: ImageProps) => {
-	return <NextImage {...props} loader={customLoader} />;
+	let _className = "";
+	if (props.circle) _className = utilStyles.borderCircle;
+
+	return <NextImage className={`${props.className} ${_className}`} {...props} loader={customLoader} />;
 };
 
 export default Image;

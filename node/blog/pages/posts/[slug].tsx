@@ -1,14 +1,14 @@
 import React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { getAllPosts, getSinglePost } from "../../utils/mdx";
-import styles from "../../styles/Home.module.css";
+import Layout from "../../components/Layout/Layout";
 const Post = ({ code, frontmatter }: any) => {
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
 	return (
-		<div className={styles.container}>
+		<Layout>
 			<Component />
-		</div>
+		</Layout>
 	);
 };
 

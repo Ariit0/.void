@@ -1,7 +1,11 @@
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
 import { getAllPosts } from "../utils/mdx";
 import Image from "../components/Image";
+import { Heading, ListItem, UnorderedList } from "@chakra-ui/react";
+import Layout, { siteTitle } from "../components/Layout/Layout";
+import Head from "next/head";
+import utilStyles from "../styles/utils.module.css";
+import { Divider } from "@chakra-ui/react";
 
 export type Frontmatter = {
 	slug: string;
@@ -16,17 +20,26 @@ type Post = {
 };
 const Home: React.FC<{ posts: Post[] }> = ({ posts }) => {
 	return (
-		<div className={styles.container}>
-			<Image src="/test.jpg" alt="Vercel Logo" width={200} height={100} />
-			<h1>✍️ All latest Posts</h1>
-			<ul>
+		<Layout home>
+			<Head>
+				<title>{siteTitle}</title>
+			</Head>
+			<section className={utilStyles.headingMd}>
+				<p>Hello World. Software Developer.</p>
+			</section>
+			<br />
+			<Divider />
+			<br />
+
+			<Heading>✍️ All latest Posts</Heading>
+			<UnorderedList>
 				{posts.map((post, index) => (
-					<li key={index}>
+					<ListItem key={index}>
 						<Link href={`posts/${post.slug}`}>{post.frontmatter.title}</Link>
-					</li>
+					</ListItem>
 				))}
-			</ul>
-		</div>
+			</UnorderedList>
+		</Layout>
 	);
 };
 
