@@ -13,6 +13,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "esbuild": "^0.14.36",
+    "gray-matter": "^4.0.3",
+    "mdx-bundler": "^9.0.0",
     "next": "12.1.2",
     "react": "18.0.0",
     "react-dom": "18.0.0"
