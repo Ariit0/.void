@@ -2,7 +2,8 @@ import React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { getAllPosts, getSinglePost } from "../../utils/mdx";
 import Layout from "../../components/Layout/Layout";
-const Post = ({ code, frontmatter }: any) => {
+
+const Post = ({ code, frontmatter }: Post) => {
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
 	return (

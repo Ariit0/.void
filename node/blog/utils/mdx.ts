@@ -7,10 +7,20 @@ import { PluggableList } from "unified";
 export const ROOT = process.cwd();
 export const POSTS_PATH = path.join(process.cwd(), "content/posts");
 
+/**
+ * Synchronously reads the entire contents of a file
+ * @param filename
+ * @returns
+ */
 export const getFileContent = (filename: string) => {
 	return fs.readFileSync(path.join(POSTS_PATH, filename), "utf8");
 };
 
+/**
+ * Documentation: https://github.com/kentcdodds/mdx-bundler
+ * @param content
+ * @returns
+ */
 const getCompiledMDX = async (content: string) => {
 	// Next.JS esbuild ENOENT Issue
 	if (process.platform === "win32") {
@@ -40,16 +50,22 @@ const getCompiledMDX = async (content: string) => {
 	}
 };
 
-export const getSinglePost = async (slug: string) => {
+/**
+ * Parses markdown file and returns content to be consumed via props
+ * @param slug
+ * @returns
+ */
+export const getSinglePost = async (slug: string): Promise<Post> => {
 	const source = getFileContent(`${slug}.mdx`);
 	const { code, frontmatter } = await getCompiledMDX(source);
 
 	return {
-		frontmatter,
-		code
+		code: code,
+		frontmatter: frontmatter as FrontMatter
 	};
 };
-export const getAllPosts = () => {
+
+export const getAllPosts = (): AllPosts[] => {
 	return fs
 		.readdirSync(POSTS_PATH)
 		.filter((path) => /\.mdx?$/.test(path))
@@ -59,7 +75,8 @@ export const getAllPosts = () => {
 			const { data } = matter(source);
 
 			return {
-				frontmatter: data,
+				code: source,
+				frontmatter: data as FrontMatter,
 				slug: slug
 			};
 		});

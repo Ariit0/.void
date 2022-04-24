@@ -38,10 +38,11 @@ const customLoader = ({ src, width, quality }: ImageLoaderProps) => {
 };
 
 const Image = (props: ImageProps) => {
+	let { circle, ...rest } = props;
 	let _className = "";
-	if (props.circle) _className = utilStyles.borderCircle;
+	if (circle) _className = utilStyles.borderCircle;
 
-	return <NextImage className={`${props.className} ${_className}`} {...props} loader={customLoader} />;
+	return <NextImage className={`${props.className} ${_className}`} {...rest} loader={customLoader} />;
 };
 
 export default Image;

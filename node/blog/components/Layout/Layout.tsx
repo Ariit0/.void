@@ -10,7 +10,7 @@ interface LayoutProps {
 }
 
 const name = "Ari Luangamath";
-export const siteTitle = "Next.js Sample Website";
+export const siteTitle = "Ariito";
 
 /**
  * Shared across all pages
