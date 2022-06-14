@@ -1,11 +1,10 @@
-import Link from "next/link";
 import { getAllPosts } from "../utils/mdx";
-import { Flex, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
+import { Heading, VStack } from "@chakra-ui/react";
 import Layout, { siteTitle } from "../components/Layout/Layout";
 import Head from "next/head";
 import utilStyles from "../styles/utils.module.css";
 import { Divider } from "@chakra-ui/react";
-import format from "date-fns/format";
+import BlogCard from "../components/BlogCard";
 
 const Home: React.FC<{ posts: AllPosts[] }> = ({ posts }) => {
 	return (
@@ -20,19 +19,18 @@ const Home: React.FC<{ posts: AllPosts[] }> = ({ posts }) => {
 			<Divider />
 			<br />
 
-			<Heading>✍️ All latest Posts</Heading>
-			<UnorderedList>
+			<VStack spacing={"12px"} align={"stretch"}>
+				<Heading>✍️ All latest Posts</Heading>
 				{posts.map((post, index) => (
-					<ListItem key={index}>
-						<Flex style={{ flexDirection: "column" }}>
-							<Link href={`posts/${post.slug}`}>{post.frontmatter.title}</Link>
-							<Link href={`posts/${post.slug}`}>
-								{format(new Date(post.frontmatter.publishedOn), "PPP")}
-							</Link>
-						</Flex>
-					</ListItem>
+					<BlogCard
+						key={`${index}_blogCard`}
+						href={`posts/${post.slug}`}
+						title={post.frontmatter.title}
+						description={post.frontmatter.description}
+						tags={post.frontmatter.tags}
+					/>
 				))}
-			</UnorderedList>
+			</VStack>
 		</Layout>
 	);
 };

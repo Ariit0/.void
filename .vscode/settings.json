@@ -1,5 +1,9 @@
 {
     "editor.formatOnSave": true,
+    "editor.tabCompletion": "on",
+    "terminal.integrated.automationProfile.osx": {
+        "path": "/usr/local/bin/zsh-with-rc"
+    },
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,

@@ -18,6 +18,7 @@ interface AllPosts extends Post {
  */
 interface FrontMatter {
 	title: string;
+	description: string;
 	isPublished: boolean;
 	publishedOn: Date;
 	layout: "Article" | string;
