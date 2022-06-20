@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
+import { TopBar } from "../components/TopBar";
 
 const BaseTheme = extendTheme({
 	semanticTokens: {
@@ -20,6 +21,7 @@ const BaseTheme = extendTheme({
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ChakraProvider theme={BaseTheme}>
+			<TopBar />
 			<Component {...pageProps} />
 		</ChakraProvider>
 	);
