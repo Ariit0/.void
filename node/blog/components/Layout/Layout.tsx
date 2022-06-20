@@ -34,14 +34,14 @@ const Layout = ({ children, home }: LayoutProps): JSX.Element => {
 			<header className={styles.header}>
 				{home ? (
 					<>
-						<Image priority src="/profile.png" circle height={144} width={144} alt={name} />
+						<Image priority src="images/profile.png" circle height={144} width={144} alt={name} />
 						<h1 className={utilStyles.heading2Xl}>{name}</h1>
 					</>
 				) : (
 					<>
 						<Link href="/">
 							<a>
-								<Image priority src="/profile.png" circle height={108} width={108} alt={name} />
+								<Image priority src="images/profile.png" circle height={108} width={108} alt={name} />
 							</a>
 						</Link>
 						<h2 className={utilStyles.headingLg}>
