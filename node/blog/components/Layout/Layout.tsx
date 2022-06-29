@@ -3,6 +3,7 @@ import Link from "../Link";
 import styles from "./Layout.module.css";
 import Image from "../Image";
 import utilStyles from "../../styles/utils.module.css";
+import DarkModeSwitch from "../DarkModeSwitch";
 
 interface LayoutProps {
 	children: React.ReactNode;
@@ -49,6 +50,7 @@ const Layout = ({ children, home }: LayoutProps): JSX.Element => {
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="og:title" content={siteTitle} />
 			</Head>
+			<DarkModeSwitch />
 			<header className={styles.header}>{home ? renderHomeLayout() : renderBlogLayout()}</header>
 			<main>{children}</main>
 			{!home && (
