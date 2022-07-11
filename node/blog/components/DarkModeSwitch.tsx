@@ -1,26 +1,26 @@
 import { useColorMode, IconButton, Icon } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
-import { useAppDispatch } from "../store/hooks/hooks";
-import { setIsDarkMode } from "../store/slices/interfaceSlice";
+import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
+import { isDarkMode, setIsDarkMode } from "../store/slices/interfaceSlice";
 
 const DarkModeSwitch = () => {
 	const dispatch = useAppDispatch();
+	const darkMode = useAppSelector(isDarkMode);
+
 	const { colorMode, toggleColorMode } = useColorMode();
-	const isDark = colorMode === "dark";
 
-	// useEffect(() => {
-	// 	if (localStorage.getItem("chakra-ui-color-mode") === "light" && colorMode === "dark") {
-	// 		setTimeout(() => toggleColorMode(), 1000);
-	// 	} else if (localStorage.getItem("chakra-ui-color-mode") === "dark" && colorMode === "light") {
-	// 		setTimeout(() => toggleColorMode(), 1000);
-	// 	}
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, []);
+	useEffect(() => {
+		if (colorMode === "light" && darkMode) {
+			toggleColorMode();
+		} else if (colorMode === "dark" && !darkMode) {
+			toggleColorMode();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [darkMode]);
 
-	// TODO: need a way to persist selected theme (on refresh), currently chakrai uis current apis dont work.........
 	const handleOnClick = () => {
-		// dispatch(setIsDarkMode(isDark));
-		toggleColorMode();
+		dispatch(setIsDarkMode(!darkMode));
 	};
 
 	return (
@@ -28,7 +28,7 @@ const DarkModeSwitch = () => {
 			position="fixed"
 			top={4}
 			right={4}
-			icon={isDark ? <Icon as={FaSun} /> : <Icon as={FaMoon} />}
+			icon={darkMode ? <Icon as={FaSun} /> : <Icon as={FaMoon} />}
 			aria-label="Toggle Theme"
 			onClick={handleOnClick}
 		/>

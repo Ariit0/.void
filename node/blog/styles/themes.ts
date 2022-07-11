@@ -1,14 +1,14 @@
 /**
  * Using Chakra UI colour definitions, we define the semantic tokens only
  */
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
 
 export const config: ThemeConfig = {
 	initialColorMode: "dark",
 	useSystemColorMode: false
 };
 
-export const BaseTheme = extendTheme({
+export const theme = extendTheme({
 	config,
 	semanticTokens: {
 		colors: {
