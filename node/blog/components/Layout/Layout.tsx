@@ -23,7 +23,7 @@ const Layout = ({ children, home }: LayoutProps): JSX.Element => {
 			<>
 				<Link href="/">
 					<a>
-						<Image priority src="images/profile.png" circle height={108} width={108} alt={name} />
+						<Image priority src="testImage.png" circle height={108} width={108} alt={name} />
 					</a>
 				</Link>
 				<h2 className={utilStyles.headingLg}>
@@ -38,7 +38,7 @@ const Layout = ({ children, home }: LayoutProps): JSX.Element => {
 	const renderHomeLayout = () => {
 		return (
 			<>
-				<Image priority src="images/profile.png" circle height={144} width={144} alt={name} />
+				<Image priority src="testImage.png" circle height={144} width={144} alt={name} />
 				<h1 className={utilStyles.heading2Xl}>{name}</h1>
 			</>
 		);
@@ -49,6 +49,7 @@ const Layout = ({ children, home }: LayoutProps): JSX.Element => {
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="og:title" content={siteTitle} />
+				<title>{siteTitle}</title>
 			</Head>
 			<DarkModeSwitch />
 			<header className={styles.header}>{home ? renderHomeLayout() : renderBlogLayout()}</header>
