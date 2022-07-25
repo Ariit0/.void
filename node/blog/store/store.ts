@@ -1,9 +1,9 @@
 import { Action, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { persistStore, persistReducer, PersistConfig } from "redux-persist";
-import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 
 import interfaceReducer, { InterfaceState } from "./slices/interfaceSlice";
+import storage from "./storage";
 
 /**
  * Redux Full Store Structure
